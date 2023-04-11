@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CitasMedicasDBModelStoreContainer" CdmEntityContainer="CitasMedicasDBEntities">
+    <EntitySetMapping Name="Cita">
+      <EntityTypeMapping TypeName="CitasMedicasDBModel.Cita">
+        <MappingFragment StoreEntitySet="Cita">
+          <ScalarProperty Name="idCita" ColumnName="idCita" />
+          <ScalarProperty Name="fechaCita" ColumnName="fechaCita" />
+          <ScalarProperty Name="horaCita" ColumnName="horaCita" />
+          <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+          <ScalarProperty Name="idMedico" ColumnName="idMedico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consulta">
+      <EntityTypeMapping TypeName="CitasMedicasDBModel.Consulta">
+        <MappingFragment StoreEntitySet="Consulta">
+          <ScalarProperty Name="idConsulta" ColumnName="idConsulta" />
+          <ScalarProperty Name="fechaConsulta" ColumnName="fechaConsulta" />
+          <ScalarProperty Name="horaConsulta" ColumnName="horaConsulta" />
+          <ScalarProperty Name="motivoConsulta" ColumnName="motivoConsulta" />
+          <ScalarProperty Name="idCita" ColumnName="idCita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medico">
+      <EntityTypeMapping TypeName="CitasMedicasDBModel.Medico">
+        <MappingFragment StoreEntitySet="Medico">
+          <ScalarProperty Name="idMed" ColumnName="idMed" />
+          <ScalarProperty Name="nombreMed" ColumnName="nombreMed" />
+          <ScalarProperty Name="escpecialidadMed" ColumnName="escpecialidadMed" />
+          <ScalarProperty Name="emailMed" ColumnName="emailMed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paciente">
+      <EntityTypeMapping TypeName="CitasMedicasDBModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="idPac" ColumnName="idPac" />
+          <ScalarProperty Name="nombrePac" ColumnName="nombrePac" />
+          <ScalarProperty Name="fechanacimientoPac" ColumnName="fechanacimientoPac" />
+          <ScalarProperty Name="emailPac" ColumnName="emailPac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

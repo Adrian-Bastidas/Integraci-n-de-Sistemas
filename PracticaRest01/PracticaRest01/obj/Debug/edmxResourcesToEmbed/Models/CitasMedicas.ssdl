@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CitasMedicasDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cita">
+    <Key>
+      <PropertyRef Name="idCita" />
+    </Key>
+    <Property Name="idCita" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaCita" Type="date" Nullable="false" />
+    <Property Name="horaCita" Type="time" Precision="7" Nullable="false" />
+    <Property Name="idPaciente" Type="int" Nullable="false" />
+    <Property Name="idMedico" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Consulta">
+    <Key>
+      <PropertyRef Name="idConsulta" />
+    </Key>
+    <Property Name="idConsulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaConsulta" Type="date" Nullable="false" />
+    <Property Name="horaConsulta" Type="time" Precision="7" Nullable="false" />
+    <Property Name="motivoConsulta" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="idCita" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Medico">
+    <Key>
+      <PropertyRef Name="idMed" />
+    </Key>
+    <Property Name="idMed" Type="int" Nullable="false" />
+    <Property Name="nombreMed" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="escpecialidadMed" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="emailMed" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="idPac" />
+    </Key>
+    <Property Name="idPac" Type="int" Nullable="false" />
+    <Property Name="nombrePac" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="fechanacimientoPac" Type="date" Nullable="false" />
+    <Property Name="emailPac" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Cita__idMedico__3B75D760">
+    <End Role="Medico" Type="Self.Medico" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idMed" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="idMedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cita__idPaciente__3A81B327">
+    <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="idPac" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="idPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Consulta__idCita__3E52440B">
+    <End Role="Cita" Type="Self.Cita" Multiplicity="1" />
+    <End Role="Consulta" Type="Self.Consulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cita">
+        <PropertyRef Name="idCita" />
+      </Principal>
+      <Dependent Role="Consulta">
+        <PropertyRef Name="idCita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CitasMedicasDBModelStoreContainer">
+    <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consulta" EntityType="Self.Consulta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Cita__idMedico__3B75D760" Association="Self.FK__Cita__idMedico__3B75D760">
+      <End Role="Medico" EntitySet="Medico" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cita__idPaciente__3A81B327" Association="Self.FK__Cita__idPaciente__3A81B327">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Consulta__idCita__3E52440B" Association="Self.FK__Consulta__idCita__3E52440B">
+      <End Role="Cita" EntitySet="Cita" />
+      <End Role="Consulta" EntitySet="Consulta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
